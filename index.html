@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="icon" type="image/png" href="assets/favicon.png">
+	<title>Fisheye</title>
+	<link href="css/style.css" rel="stylesheet" type="text/css" />
+	<link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+	<header>
+		<a href="index.html">
+			<img src="assets/images/logo.png" class="logo" />
+		</a>
+
+		<h1>Nos photographes</h1>
+	</header>
+
+	<main id="main">
+		<section class="photographer_section"></section>
+	</main>
+
+	<template id="photographer-card">
+		<article class="photographer-card">
+			<a href="" class="photographer-card__link">
+				<div class="photographer-card__img-container">
+					<img src="" alt="" class="photographer-card__img">
+				</div>
+
+				<h2 class="photographer-card__name"></h2>
+			</a>
+
+			<div class="photographer-card__details">
+				<p class="photographer-card__location"></p>
+				<p class="photographer-card__tagline"></p>
+				<p class="photographer-card__price"></p>
+			</div>
+		</article>
+	</template>
+
+	<script type="module" src="/scripts/pages/index.js"></script>
+</body>
+</html>

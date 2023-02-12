@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="css/style.css" rel="stylesheet" type="text/css" />
+	<meta charset="utf-8">
+	<link rel="icon" type="image/png" href="assets/favicon.png">
+	<link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+	<title>Fisheye - photographe </title>
+</head>
+<body>
+	<header>
+		<a href="index.html">
+			<img src="assets/images/logo.png" class="logo" />
+		</a>
+	</header>
+
+	<main id="main"></main>
+
+	<div id="contact_modal">
+		<div class="modal">
+			<header>
+				<h2>Contactez-moi</h2>
+				<img src="assets/icons/close.svg" onclick="closeModal()" />
+			</header>
+
+			<form>
+				<div class="form-group">
+					<label for="firstname">Prénom</label>
+					<input type="text" id="firstname" name="firstname"/>
+				</div>
+
+				<div class="form-group">
+					<label for="lastname">Nom</label>
+					<input type="text" id="lastname" name="lastname"/>
+				</div>
+
+				<div class="form-group">
+					<label for="email">Nom</label>
+					<input type="email" id="email" name="last"/>
+				</div>
+
+				<div class="form-group">
+					<label for="email">Nom</label>
+					<textarea name="email" id="email" cols="30" rows="10"></textarea>
+				</div>
+
+				<button class="contact_button">Envoyer</button>
+			</form>
+		</div>
+	</div>
+
+	<template id="photographer-header">
+		<div class="photographer-header">
+			<div class="photographer-card__details">
+				<h2 class="photographer-card__name"></h2>
+	
+				<p class="photographer-card__location"></p>
+				<p class="photographer-card__tagline"></p>
+			</div>
+	
+			<button class="contact_button">Contactez-moi</button>
+	
+			<div class="photographer-card__img-container">
+				<img src="" alt="" class="photographer-card__img">
+			</div>
+		</div>
+	</template>
+
+	<script type="module" src="/scripts/pages/photographer.js"></script>
+	<!-- <script src="/scripts/pages/photographer.js"></script>
+	<script src="/scripts/utils/contactForm.js"></script> -->
+</body>
+</html>
