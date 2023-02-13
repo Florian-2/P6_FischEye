@@ -1,39 +1,39 @@
 export class Photographer {
     constructor(data) {
-        this.id = data.id;
-        this.name = data.name;
-        this.tagline = data.tagline;
-        this.country = data.country;
-        this.city = data.city;
-        this.price = data.price;
-        this.portrait = data.portrait;
+        this._id = data.id;
+        this._name = data.name;
+        this._tagline = data.tagline;
+        this._country = data.country;
+        this._city = data.city;
+        this._price = data.price;
+        this._portrait = data.portrait;
     }
 
     get id() {
-        return this.id;
+        return this._id;
     }
 
     get name() {
-        return this.name;
+        return this._name.toLocaleUpperCase();
     }
 
     get tagline() {
-        return this.tagline;
+        return this._tagline;
     }
 
     get country() {
-        return this.country;
+        return this._country;
     }
 
     get city() {
-        return this.city;
+        return this._city;
     }
 
     get price() {
-        return this.price;
+        return this._price;
     }
 
     get portrait() {
-        return this.portrait;
+        return this._portrait;
     }
 }
