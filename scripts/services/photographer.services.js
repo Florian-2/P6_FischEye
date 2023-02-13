@@ -10,7 +10,7 @@ export class API {
      * media: {id: number, photographerId: number, title: string, image: string, likes: number, price: number, date: string}[]
      * }>}
      */
-    async fetch() {
+    static async fetch() {
         const res = await fetch(this.url);
 
         if (!res.ok) {
@@ -24,7 +24,7 @@ export class API {
 
 export class PhotographerAPI extends API {
 
-     async getAllPhotographers() {
+    static async getAllPhotographers() {
         try {
             const { photographers } = await super.fetch();
             return photographers;
@@ -37,7 +37,7 @@ export class PhotographerAPI extends API {
     /**
      * @param {number} userId
     */
-    async getPhotographerById(userId) {
+    static async getPhotographerById(userId) {
         try {
             const { photographers } = await super.fetch();
             const photographer = photographers.filter((photographer) => photographer.id === userId)[0];
@@ -58,7 +58,7 @@ export class PortfolioAPI extends API {
     /**
      * @param {number} userId
     */
-    async getPortfolioPhotographer(userId) {
+    static async getPortfolioPhotographer(userId) {
         try {
             const { media } = await super.fetch();
             const portfolio = media.filter((media) => media.photographerId === userId);
