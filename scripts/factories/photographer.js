@@ -1,14 +1,5 @@
 /**
- * 
- * @param {{
- *      id: number,
- *      name: string,
- *      portrait: string,
- *      city: string,
- *      country: string,
- *      price: number
- * }} data
- * 
+ * @param {Promise<{id: number, name: string, tagline: string, country: string, city: string, price: number, portrait: string}>} data
  * @returns {Node}
  */
 export function createPhotographerCard(data) {
