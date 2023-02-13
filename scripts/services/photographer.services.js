@@ -1,7 +1,9 @@
-export class API {
+
+
+class API {
 
     constructor() {
-        this.url = "./data/photographers.json";
+        this.url = "/data/photographers.json";
     }
 
     /**
@@ -10,7 +12,7 @@ export class API {
      * media: {id: number, photographerId: number, title: string, image: string, likes: number, price: number, date: string}[]
      * }>}
      */
-    static async fetch() {
+    async fetch() {
         const res = await fetch(this.url);
 
         if (!res.ok) {
@@ -24,12 +26,13 @@ export class API {
 
 export class PhotographerAPI extends API {
 
-    static async getAllPhotographers() {
+    async getAllPhotographers() {
         try {
             const { photographers } = await super.fetch();
             return photographers;
         }
         catch (error) {
+            console.log(error);
             throw new Error(`Erreur ${error.status}, aucun photographe trouvé`);
         }
     }
@@ -37,7 +40,7 @@ export class PhotographerAPI extends API {
     /**
      * @param {number} userId
     */
-    static async getPhotographerById(userId) {
+    async getPhotographerById(userId) {
         try {
             const { photographers } = await super.fetch();
             const photographer = photographers.filter((photographer) => photographer.id === userId)[0];
@@ -49,6 +52,7 @@ export class PhotographerAPI extends API {
             return photographer;
         }
         catch (error) {
+            console.log(error);
             throw new Error(`Erreur ${error.status}, le profil du photographe n'est pas disponible`);
         }
     }
@@ -58,7 +62,7 @@ export class PortfolioAPI extends API {
     /**
      * @param {number} userId
     */
-    static async getPortfolioPhotographer(userId) {
+    async getPortfolioPhotographer(userId) {
         try {
             const { media } = await super.fetch();
             const portfolio = media.filter((media) => media.photographerId === userId);
@@ -66,7 +70,8 @@ export class PortfolioAPI extends API {
             return portfolio;
         }
         catch (error) {
-            throw new Error(`Erreur ${res.status}, le portfolio du photographe n'est pas disponible`);
+            console.log(error);
+            throw new Error(`Erreur ${error.status}, le portfolio du photographe n'est pas disponible`);
         }
     }
 }

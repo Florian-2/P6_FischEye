@@ -1,20 +1,21 @@
-import { createPhotographerCard } from '../factories/photographer.js';
-import { getAllPhotographers } from '../services/photographer.services.js';
+import { PhotographerFactory } from '../factories/photographerV2.js';
+import { PhotographerAPI } from '../services/photographer.services.js';
 
 
 async function init() {
     try {
-        const photographers = await getAllPhotographers();
+        const photographers = await (new PhotographerAPI().getAllPhotographers());
 
-        const photographersSection = document.querySelector(".photographer_section");
+        const photographersSection = document.querySelector("section.photographer_section");
 
         photographers.forEach((photographer) => {
-            const card = createPhotographerCard(photographer);
+            const card = new PhotographerFactory(photographer).createPhotographerCard();
             photographersSection.appendChild(card);
         });
     }
     catch (error) {
-        alert(error.message);
+        console.error(error);
+        alert("ERREUR");
     }
 };
 
