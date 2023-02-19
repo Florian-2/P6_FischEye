@@ -1,4 +1,4 @@
-export class PhotographerFactory {
+export class PhotographerTemplate {
     constructor(data) {
         this.photographer = data;
     }
@@ -22,6 +22,9 @@ export class PhotographerFactory {
         return card;
     }
 
+    /**
+     * @returns {Node}
+     */
     createPhotographerHeader() {
         const templateCard = document.getElementById("photographer-header");
         const card = document.importNode(templateCard.content, true);
@@ -32,6 +35,7 @@ export class PhotographerFactory {
         card.querySelector("h2").textContent = this.photographer.name;
         card.querySelector(".photographer-card__location").textContent = `${this.photographer.city}, ${this.photographer.country}`;
         card.querySelector(".photographer-card__tagline").textContent = this.photographer.tagline;
+        // card.querySelector("button").addEventListener("click")
 
         return card;
     }

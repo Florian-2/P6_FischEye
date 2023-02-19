@@ -4,5 +4,7 @@
     --color-second: #525252;
     --color-second-light: #FAFAFA;
 
+    --raduis: 8px;
+
     --transition-time: 250ms;
 }

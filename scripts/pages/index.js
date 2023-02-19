@@ -1,6 +1,6 @@
-import { PhotographerFactory } from '../factories/photographerV2.js';
-import { PhotographerAPI } from '../services/photographer.services.js';
-import { Photographer } from '../models/photographer.js';
+import { PhotographerAPI } from '../services/photographer.js';
+import { PhotographerFactory } from '../Photograpers/photographerFactory.js';
+import { PhotographerModel } from '../Photograpers/photographerModel.js';
 
 
 async function init() {
@@ -10,15 +10,13 @@ async function init() {
         const photographersSection = document.querySelector("section.photographer_section");
 
         photographers.forEach((photographer) => {
-            const photographeModel = new Photographer(photographer)
-            // console.log(photographeModel);
-            const card = new PhotographerFactory(photographeModel).createPhotographerCard();
+            const photographeModel = new PhotographerModel({ profile: photographer });
+            const card = new PhotographerFactory(photographeModel, "card");
             photographersSection.appendChild(card);
         });
     }
     catch (error) {
         console.error(error);
-        // alert("ERREUR");
     }
 };
 
