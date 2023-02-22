@@ -34,12 +34,12 @@ export class FormModal {
     }
 
     render() {
-        const template = document.getElementById("formModal");
+        const template = document.getElementById("template-formModal");
         const modal = document.importNode(template.content, true);
         modal.querySelector("h2").textContent = `Contactez-moi ${this.#photographerName}`;
         modal.querySelector(".close").addEventListener("click", this.close);
         modal.querySelector("form").addEventListener("submit", this.submit);
 
-        document.body.appendChild(modal);
+        document.getElementById("profile").appendChild(modal);
     }
 }

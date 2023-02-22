@@ -57,6 +57,10 @@ h1 {
     transition: transform var(--transition-time);
 }
 
+.photographer-card__img-container {
+    min-width: 200px;
+}
+
 .photographer-card__img {
     width: 100%;
     height: 100%;

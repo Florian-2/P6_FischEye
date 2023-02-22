@@ -26,7 +26,7 @@ export class PhotographerTemplate {
      * @returns {Node}
      */
     createPhotographerHeader() {
-        const templateCard = document.getElementById("photographer-header");
+        const templateCard = document.getElementById("template-photographer-profile");
         const card = document.importNode(templateCard.content, true);
 
         const picture = `assets/photographers/${this.photographer.portrait}`;
@@ -35,7 +35,6 @@ export class PhotographerTemplate {
         card.querySelector("h2").textContent = this.photographer.name;
         card.querySelector(".photographer-card__location").textContent = `${this.photographer.city}, ${this.photographer.country}`;
         card.querySelector(".photographer-card__tagline").textContent = this.photographer.tagline;
-        // card.querySelector("button").addEventListener("click")
 
         return card;
     }

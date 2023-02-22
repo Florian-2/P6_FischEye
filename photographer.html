@@ -1,81 +1,96 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8">
-	<link rel="icon" type="image/png" href="assets/favicon.png">
-	<link rel="stylesheet" href="./css/style.css">
-	<link rel="stylesheet" href="./css/photographer.css">
-	<link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-	<title>Fisheye - photographe </title>
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/png" href="assets/favicon.png" />
+		<title>Fisheye - photographe</title>
+		<link rel="stylesheet" href="./css/style.css" />
+		<link rel="stylesheet" href="./css/photographer.css" />
+		<link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	</head>
+	<body>
+		<header>
+			<a href="index.html">
+				<img src="assets/images/logo.png" class="logo" />
+			</a>
+		</header>
 
-	<style>
-		#test {
-			position: absolute;
-		}
-	</style>
-</head>
-<body>
-	<header>
-		<a href="index.html">
-			<img src="assets/images/logo.png" class="logo" />
-		</a>
-	</header>
+		<main id="main">
+			<section id="profile"></section>
+			<section id="filter"></section>
+			<section id="portfolio"></section>
+		</main>
 
-	<main id="main"></main>
+		<template id="template-photographer-profile">
+			<article class="photographer-header">
+				<div class="photographer-card__details">
+					<h2 class="photographer-card__name"></h2>
 
-	<div id="test"></div>
-
-	<template id="formModal">
-		<div class="modal" id="contact_modal">
-			<header class="modal__header">
-				<h2></h2>
-				<img src="assets/icons/close.svg" class="close" />
-			</header>
-
-			<form action="#" method="post">
-				<div class="form-group">
-					<label for="firstname">Prénom</label>
-					<input type="text" id="firstname" name="firstname"/>
+					<p class="photographer-card__location"></p>
+					<p class="photographer-card__tagline"></p>
 				</div>
 
-				<div class="form-group">
-					<label for="lastname">Nom</label>
-					<input type="text" id="lastname" name="lastname"/>
-				</div>
+				<button class="contact_button">Contactez-moi</button>
 
-				<div class="form-group">
-					<label for="email">Email</label>
-					<input type="email" id="email" name="email"/>
-				</div>
+				<figure class="photographer-card__img-container">
+					<img src="" alt="" class="photographer-card__img" />
+				</figure>
+			</article>
+		</template>
 
-				<div class="form-group">
-					<label for="message">Votre message</label>
-					<textarea name="message" id="message" cols="30" rows="10"></textarea>
-				</div>
+		<template id="template-formModal">
+			<div class="modal" id="contact_modal">
+				<header class="modal__header">
+					<h2></h2>
+					<img src="assets/icons/close.svg" class="close" />
+				</header>
 
-				<button class="contact_button">Envoyer</button>
-			</form>
-		</div>
-	</template>
+				<form action="#" method="post">
+					<div class="form-group">
+						<label for="firstname">Prénom</label>
+						<input type="text" id="firstname" name="firstname" />
+					</div>
 
-	<template id="photographer-header">
-		<article class="photographer-header">
-			<div class="photographer-card__details">
-				<h2 class="photographer-card__name"></h2>
+					<div class="form-group">
+						<label for="lastname">Nom</label>
+						<input type="text" id="lastname" name="lastname" />
+					</div>
 
-				<p class="photographer-card__location"></p>
-				<p class="photographer-card__tagline"></p>
+					<div class="form-group">
+						<label for="email">Email</label>
+						<input type="email" id="email" name="email" />
+					</div>
+
+					<div class="form-group">
+						<label for="message">Votre message</label>
+						<textarea name="message" id="message" cols="30" rows="10"></textarea>
+					</div>
+
+					<button class="contact_button">Envoyer</button>
+				</form>
 			</div>
+		</template>
 
-			<button class="contact_button">Contactez-moi</button>
+		<template id="template-filter"> 
+			<div class="filter-section">
+				<h3>Trier par</h3>
 
-			<figure class="photographer-card__img-container">
-				<img src="" alt="" class="photographer-card__img">
-			</figure>
-		</article>
-	</template>
+				<div class="filter-dropdown">
+					<button class="filter-dropdown__button">
+						<span class="filter-dropdown__label">Défaut</span>
+						<i class="fa-solid fa-angle-down filter-dropdown__icon"></i>
+					</button>
 
-	<script type="module" src="/scripts/pages/photographer.js"></script>
-	<!-- <script src="/scripts/utils/contactForm.js"></script> -->
-</body>
+					<ul class="filter-dropdown__options" role="listbox">
+						<li class="filter-dropdown__option" data-option="popularity" role="option">Popularité</li>
+						<li class="filter-dropdown__option" data-option="date" role="option">Date</li>
+						<li class="filter-dropdown__option" data-option="title" role="option">Titre</li>
+					</ul>
+				</div>
+			</div>
+		</template>
+
+		<script type="module" src="/scripts/pages/photographer.js"></script>
+	</body>
 </html>
