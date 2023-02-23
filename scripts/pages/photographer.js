@@ -14,13 +14,13 @@ async function init() {
 		const photographe = await new PhotographerAPI().getPhotographerById(userId);
 		const portfolio = await new PortfolioAPI().getPortfolioPhotographer(userId);
 
-		const photographeModel = new PhotographerModel({ profile: photographe, portfolio });
-		const card = new PhotographerFactory(photographeModel, "header");
-		document.getElementById("profile").appendChild(card);
+		// const photographeModel = new PhotographerModel({ profile: photographe, portfolio });
+		// const card = new PhotographerFactory(photographeModel, "header");
+		// document.getElementById("profile").appendChild(card);
 
-		const btnOpenModal = document.querySelector("button");
-		const modal = new FormModal(photographe.name);
-		modal.initEvent(btnOpenModal);
+		// const btnOpenModal = document.querySelector("button");
+		// const modal = new FormModal(photographe.name);
+		// modal.initEvent(btnOpenModal);
 
 		const filter = new DropdownFilter();
 	} 

@@ -16,7 +16,7 @@
 			</a>
 		</header>
 
-		<main id="main">
+		<main>
 			<section id="profile"></section>
 			<section id="filter"></section>
 			<section id="portfolio"></section>
@@ -74,17 +74,16 @@
 
 		<template id="template-filter"> 
 			<div class="filter-section">
-				<h3>Trier par</h3>
-
+				<h3 class="filter-section__title">Trier par</h3>
+	
 				<div class="filter-dropdown">
-					<button class="filter-dropdown__button">
-						<span class="filter-dropdown__label">Défaut</span>
+					<button type="button" class="filter-dropdown__button round">
+						<span class="filter-dropdown__label">Popularité</span>
 						<i class="fa-solid fa-angle-down filter-dropdown__icon"></i>
 					</button>
-
+	
 					<ul class="filter-dropdown__options" role="listbox">
 						<li class="filter-dropdown__option" data-option="popularity" role="option">Popularité</li>
-						<li class="filter-dropdown__option" data-option="date" role="option">Date</li>
 						<li class="filter-dropdown__option" data-option="title" role="option">Titre</li>
 					</ul>
 				</div>

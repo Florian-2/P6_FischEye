@@ -42,7 +42,7 @@ export class PhotographerModel {
     }
 
     get portrait() {
-        return this.#profile.portrait;
+        return `assets/photographers/${this.#profile.portrait}`;
     }
 
     get portfolio() {

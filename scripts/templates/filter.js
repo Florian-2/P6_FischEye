@@ -3,13 +3,21 @@ export class DropdownFilter {
 		this.isOpen = false;
 		this.value = "popularity";
 		this.textContent = "Popularité";
+		this.dropdown = null;
 		this.render();
+		this.accessibility();
+		// this.handleClickWindow();
 	}
 
 	/**
 	 * @param {Event} e
 	 */
 	handleChange(e) {
+		/**
+		 * @type {HTMLLIElement}
+		 */
+		const li = e.target;
+		const listLi = document.querySelectorAll(".filter-dropdown__option");
 		const value = e.target.dataset.option;
 		const textContent = e.target.textContent;
 		const btnDrop = document.querySelector(".filter-dropdown__button");
@@ -18,23 +26,47 @@ export class DropdownFilter {
 		this.value = value;
 		this.textContent = textContent;
 		label.textContent = textContent;
+
+		listLi.forEach((li) => li.classList.remove("selected"));
+		li.classList.add("selected");
 	}
 
-	/**
-	 * @param {Event} e
-	 */
-	handleClick(e) {
-		const dropdown = document.querySelector(".filter-dropdown");
-		const btnDrop = e.target;
+	handleClickWindow() {
+		window.addEventListener("click", (e) => {});
+	}
 
-		if(this.isOpen) {
-			dropdown.style.height = `${btnDrop.scrollHeight}px`;
-			this.isOpen = false;
-		}
-		else {
-			dropdown.style.height = `${dropdown.scrollHeight}px`;
-			this.isOpen = true;
-		}
+	handleClick() {
+		const options = this.dropdown.querySelector(".filter-dropdown__options");
+		const btn = this.dropdown.querySelector(".filter-dropdown__button");
+		options.classList.toggle("active");
+		btn.classList.toggle("round");
+	}
+
+	accessibility() {
+		/** @type {NodeListOf<HTMLLIElement>} */
+		const options = this.dropdown.querySelectorAll(".filter-dropdown__option");
+		console.log(options);
+		let active = -1;
+
+		this.dropdown.addEventListener("keydown", (e) => {
+			// e.preventDefault();
+			const keyCode = e.key;
+
+			if (keyCode === "ArrowDown") {
+				if (active < options.length - 1) {
+					active++;
+					console.log(options[active]);
+					options[active].focus();
+				}
+			}
+			else if (keyCode === "ArrowUp") {
+				if (active > 0) {
+					active--;
+					console.log(options[active]);
+					options[active].focus();
+				}
+			}
+		})
 	}
 
 	render() {
@@ -43,8 +75,11 @@ export class DropdownFilter {
 
 		dropdown.querySelector(".filter-dropdown__label").textContent = this.textContent;
 		dropdown.querySelector(".filter-dropdown__button").addEventListener("click", (e) => this.handleClick(e));
+		dropdown.querySelector(".filter-dropdown__option").classList.add("selected");
 		dropdown.querySelectorAll(".filter-dropdown__option").forEach((li) => li.addEventListener("click", (e) => this.handleChange(e)))
 
         document.getElementById("filter").appendChild(dropdown);
+
+		this.dropdown = document.querySelector(".filter-dropdown");
 	}
 }
