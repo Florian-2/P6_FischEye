@@ -164,10 +164,6 @@ textarea {
 	transition: border-radius var(--transition-time);
 }
 
-.filter-dropdown__button:focus {
-	background-color: aqua;
-}
-
 .filter-dropdown__label {
 	margin-right: 20px;
 }
@@ -207,8 +203,15 @@ textarea {
 }
 
 .filter-dropdown__option:hover,
-.filter-dropdown__option:focus {
+.filter-dropdown__option:focus,
+.filter-dropdown__option.selected {
+	text-decoration: underline;
+}
+
+
+
+/* .filter-dropdown__option.focus {
 	text-decoration: underline;
 	color: aqua;
 	outline: 2px solid aqua;
-}
+} */
