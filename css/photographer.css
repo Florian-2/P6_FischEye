@@ -3,7 +3,7 @@
 }
 
 main {
-	max-width: 1000px;
+	max-width: 1200px;
 	margin: 0 auto;
 	padding: 10px;
 	display: flex;
@@ -82,6 +82,11 @@ main {
 	text-align: left !important;
 }
 
+.modal__close {
+	background: transparent;
+	border: none;
+}
+
 .modal__header img {
 	cursor: pointer;
 	width: 30px;
@@ -137,81 +142,15 @@ textarea {
 	gap: 20px;
 }
 
-.filter-section__title {
+.filter-section__label {
+	font-size: 1.7rem;
+}
+
+.filter-section__select {
+	background: var(--color-primary);
+	padding: 1rem;
+	border-radius: var(--raduis);
+	color: white;
+	font-family: inherit;
 	font-size: 1.6rem;
 }
-
-.filter-dropdown {
-	width: 140px;
-	font-size: 1.7rem;
-	position: relative;
-	color: white;
-}
-
-.filter-dropdown__button {
-	width: 100%;
-	padding: 1.5rem;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	background: transparent;
-	font-size: inherit;
-	color: inherit;
-	border: none;
-	background-color: var(--color-primary);
-	border-radius: var(--raduis) var(--raduis) 0 0;
-	cursor: pointer;
-	transition: border-radius var(--transition-time);
-}
-
-.filter-dropdown__label {
-	margin-right: 20px;
-}
-
-.filter-dropdown__label,
-.filter-dropdown__icon {
-	pointer-events: none;
-}
-
-.filter-dropdown__button.round {
-	border-radius: var(--raduis);
-}
-
-.filter-dropdown__options {
-	opacity: 0;
-	pointer-events: none;
-
-	width: 100%;
-	list-style-type: none;
-	position: absolute;
-	background-color: var(--color-primary);
-	padding-inline: 1.5rem;
-	border-radius: 0 0 var(--raduis) var(--raduis);
-	overflow: hidden;
-	transition: opacity var(--transition-time);
-}
-
-.filter-dropdown__options.active {
-	opacity: 1;
-	pointer-events: all;
-}
-
-.filter-dropdown__option {
-	padding-block: 1rem;
-	cursor: pointer;
-	border-top: 2px solid white;
-}
-
-.filter-dropdown__option:hover,
-.filter-dropdown__option:focus,
-.filter-dropdown__option.selected {
-	text-decoration: underline;
-}
-
-
-
-/* .filter-dropdown__option.focus {
-	text-decoration: underline;
-	color: aqua;
-	outline: 2px solid aqua;
-} */

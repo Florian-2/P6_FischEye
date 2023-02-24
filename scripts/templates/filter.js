@@ -1,86 +1,59 @@
+import { MediaTemplate } from "../Media/MediaTemplate.js";
+
 export class DropdownFilter {
-	constructor() {
-		this.isOpen = false;
-		this.value = "popularity";
-		this.textContent = "Popularité";
-		this.dropdown = null;
+	/**
+	 * @param {"popularity" | "date" | "title} sort
+	 */
+	constructor(portfolio, sort = "popularity") {
+		this.sortPortfolio = portfolio;
+		this.value = sort;
 		this.render();
-		// this.accessibility();
-		// this.handleClickWindow();
+		this.sortMedia();
+		this.renderPortfolio();
+	}
+
+	renderPortfolio() {
+		new MediaTemplate(this.sortPortfolio).createPortfolio();
 	}
 
 	/**
 	 * @param {Event} e
 	 */
 	handleChange(e) {
-		/** @type {HTMLLIElement} */
-		const li = e.target;
-		const listLi = document.querySelectorAll(".filter-dropdown__option");
-		const ul = document.querySelector(".filter-dropdown__options");
-		const value = e.target.dataset.option;
-		const textContent = e.target.textContent;
-		const btnDrop = document.querySelector(".filter-dropdown__button");
-		const label = btnDrop.querySelector(".filter-dropdown__label");
-
-		this.value = value;
-		this.textContent = textContent;
-		label.textContent = textContent;
-
-		listLi.forEach((li) => li.classList.remove("selected"));
-		li.classList.add("selected");
-		ul.classList.remove("active");
-		btnDrop.classList.add("round")
+		this.value = e.target.value;
+		this.sortMedia();
+		this.renderPortfolio();
 	}
 
-	handleClickWindow() {
-		window.addEventListener("click", (e) => {});
-	}
+	sortMedia() {
+		switch (this.value) {
+			case "popularity":
+				return this.sortPortfolio.sort((a, b) => b.likes - a.likes);
 
-	handleClick() {
-		const options = this.dropdown.querySelector(".filter-dropdown__options");
-		const btn = this.dropdown.querySelector(".filter-dropdown__button");
-		options.classList.toggle("active");
-		btn.classList.toggle("round");
-	}
+			case "date":
+				return this.sortPortfolio.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-	accessibility() {
-		/** @type {NodeListOf<HTMLLIElement>} */
-		const options = this.dropdown.querySelectorAll(".filter-dropdown__option");
-		console.log(options);
-		let active = -1;
+			case "title":
+				return this.sortPortfolio.sort((a, b) => {
+					if (b.title > a.title) return -1;
+					if (a.title > b.title) return 1;
 
-		this.dropdown.addEventListener("keydown", (e) => {
-			console.log(e.key);
-			const keyCode = e.key;
+					return 0;
+				});
 
-			if (keyCode === "ArrowDown") {
-				if (active < options.length - 1) {
-					active++;
-					console.log(options[active]);
-					options[active].classList.toggle("focus");
-				}
-			}
-			else if (keyCode === "ArrowUp") {
-				if (active > 0) {
-					active--;
-					console.log(options[active]);
-					options[active].classList.toggle("focus");
-				}
-			}
-		})
+			default:
+				return this.portfolio;
+		}
 	}
 
 	render() {
 		const template = document.getElementById("template-filter");
         const dropdown = document.importNode(template.content, true);
+		const select = dropdown.querySelector(".filter-section__select");
 
-		dropdown.querySelector(".filter-dropdown__label").textContent = this.textContent;
-		dropdown.querySelector(".filter-dropdown__button").addEventListener("click", (e) => this.handleClick(e));
-		dropdown.querySelector(".filter-dropdown__option").classList.add("selected");
-		dropdown.querySelectorAll(".filter-dropdown__option").forEach((li) => li.addEventListener("click", (e) => this.handleChange(e)))
+		select.value = this.value;
+		select.addEventListener("change", (e) => this.handleChange(e));
 
         document.getElementById("filter").appendChild(dropdown);
-
-		this.dropdown = document.querySelector(".filter-dropdown");
 	}
 }

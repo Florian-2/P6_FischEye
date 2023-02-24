@@ -1,30 +1,35 @@
-export class Media {
+class Media {
     constructor(data) {
-        this.metadata = data;
+        this._id = data.id;
+        this._photographerId = data.photographerId;
+        this._title = data.title;
+        this._likes = data.likes;
+        this._price = data.price;
+        this._date = data.date;
     }
 
     get id() {
-        this.metadata.id;
+        return this._id;
     }
 
     get photographerId() {
-        this.metadata.photographerId;
+        return this._photographerId;
     }
 
     get title() {
-        this.metadata.title;
+        return this._title.toUpperCase();
     }
 
     get date() {
-        this.metadata.date;
+        return this._date;
     }
 
     get price() {
-        this.metadata.price;
+        return this._price;
     }
 
     get likes() {
-        this.metadata.likes;
+        return this._likes;
     }
 }
 
@@ -38,11 +43,19 @@ export class ImageModel extends Media {
      */
     constructor(data) {
         super(data);
-        this.data = data;
+        this._imagePath = data.image;
     }
 
-    get imagePath() {
-        return `assets/portfolio/${this.data.id}/${this.data.image}`;
+    get path() {
+        return `assets/portfolio/${super.photographerId}/${this._imagePath}`;
+    }
+
+    createHTML() {
+        const img = document.createElement("img");
+        img.src = this.path;
+        img.alt = super.title;
+        img.width = 100;
+        return img;
     }
 }
 
@@ -56,10 +69,17 @@ export class VideoModel extends Media {
      */
     constructor(data) {
         super(data);
-        this.data = data;
+        this._videoPath = data.video;
     }
 
-    get videoPath() {
-        return `assets/portfolio/${this.data.id}/${this.data.video}`;
+    get path() {
+        return `assets/portfolio/${super.photographerId}/${this._videoPath}`;
+    }
+
+    createHTML() {
+        const video = document.createElement("video");
+        video.src = this.path;
+        video.width = 100;
+        return video;
     }
 }

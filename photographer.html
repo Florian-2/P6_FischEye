@@ -43,7 +43,9 @@
 			<div class="modal" id="contact_modal">
 				<header class="modal__header">
 					<h2></h2>
-					<img src="assets/icons/close.svg" class="close" />
+					<button class="modal__close">
+						<img src="assets/icons/close.svg" class="modal__img"/>
+					</button>
 				</header>
 
 				<form action="#" method="post">
@@ -74,20 +76,36 @@
 
 		<template id="template-filter"> 
 			<div class="filter-section">
-				<h3 class="filter-section__title">Trier par</h3>
-	
-				<div class="filter-dropdown">
-					<button type="button" class="filter-dropdown__button round">
-						<span class="filter-dropdown__label">Popularité</span>
-						<i class="fa-solid fa-angle-down filter-dropdown__icon"></i>
-					</button>
-	
-					<ul class="filter-dropdown__options" role="listbox" tabindex="1">
-						<li class="filter-dropdown__option" data-option="popularity" role="option" tabindex="2">Popularité</li>
-						<li class="filter-dropdown__option" data-option="title" role="option" tabindex="3">Titre</li>
-					</ul>
-				</div>
+				<h3 class="filter-section__label" for="filter">Trier par</h3>
+
+				<select class="filter-section__select" name="filter" id="filter">
+					<option value="popularity" selected>Popularité</option>
+					<option value="date">Date</option>
+					<option value="title">Titre</option>
+				</select>
 			</div>
+		</template>
+
+		<template id="template-media">
+			<article class="media-card">
+				<div class="media-thumbnail">
+					<a href="" class="media-thumbnail__link">
+						<!-- <img> ou <video> -->
+					</a>
+				</div>
+
+				<div class="media-detail">
+					<h3 class="media-detail__title"></h3>
+
+					<div class="media-likes">
+						<p class="media-likes__number"></p>
+
+						<button type="button" class="media-likes__like">
+							<i class="fa-solid fa-heart"></i>
+						</button>
+					</div>
+				</div>
+			</article>
 		</template>
 
 		<script type="module" src="/scripts/pages/photographer.js"></script>

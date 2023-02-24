@@ -4,12 +4,6 @@ class API {
         this.url = "/data/photographers.json";
     }
 
-    /**
-     * @returns {Promise<{
-     * photographers: {id: number, name: string, tagline: string, country: string, city: string, price: number, portrait: string}[], 
-     * media: {id: number, photographerId: number, title: string, image: string, likes: number, price: number, date: string}[]
-     * }>}
-     */
     async fetch() {
         const res = await fetch(this.url);
 

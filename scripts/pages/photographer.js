@@ -3,12 +3,15 @@ import { PhotographerModel } from "../Photograpers/photographerModel.js";
 import { PhotographerFactory } from "../Photograpers/photographerFactory.js";
 import { FormModal } from "../templates/modalForm.js";
 import { DropdownFilter } from "../templates/filter.js";
-
+import { MediaFactory } from "../Media/MediaFactory.js";
+import { ImageModel, VideoModel } from "../Media/MediaModel.js"
+import { MediaTemplate } from "../Media/MediaTemplate.js";
 
 
 async function init() {
 	const url = new URLSearchParams(window.location.search);
 	const userId = Number(url.get("id"));
+	let medias = [];
 
 	try {
 		const photographe = await new PhotographerAPI().getPhotographerById(userId);
@@ -22,8 +25,16 @@ async function init() {
 		// const modal = new FormModal(photographe.name);
 		// modal.initEvent(btnOpenModal);
 
-		const filter = new DropdownFilter();
-	} 
+		portfolio.forEach((media) => {
+			const mediaModel = new MediaFactory(media);
+			medias.push(mediaModel);
+		});
+
+		const filter = new DropdownFilter(medias, "popularity");
+		medias = filter.sortPortfolio;
+
+		// new MediaTemplate(medias).createPortfolio();
+	}
 	catch (error) {
 		console.error(error);
 	}
