@@ -5,7 +5,7 @@ export class DropdownFilter {
 		this.textContent = "Popularité";
 		this.dropdown = null;
 		this.render();
-		this.accessibility();
+		// this.accessibility();
 		// this.handleClickWindow();
 	}
 
@@ -13,11 +13,10 @@ export class DropdownFilter {
 	 * @param {Event} e
 	 */
 	handleChange(e) {
-		/**
-		 * @type {HTMLLIElement}
-		 */
+		/** @type {HTMLLIElement} */
 		const li = e.target;
 		const listLi = document.querySelectorAll(".filter-dropdown__option");
+		const ul = document.querySelector(".filter-dropdown__options");
 		const value = e.target.dataset.option;
 		const textContent = e.target.textContent;
 		const btnDrop = document.querySelector(".filter-dropdown__button");
@@ -29,6 +28,8 @@ export class DropdownFilter {
 
 		listLi.forEach((li) => li.classList.remove("selected"));
 		li.classList.add("selected");
+		ul.classList.remove("active");
+		btnDrop.classList.add("round")
 	}
 
 	handleClickWindow() {
@@ -49,21 +50,21 @@ export class DropdownFilter {
 		let active = -1;
 
 		this.dropdown.addEventListener("keydown", (e) => {
-			// e.preventDefault();
+			console.log(e.key);
 			const keyCode = e.key;
 
 			if (keyCode === "ArrowDown") {
 				if (active < options.length - 1) {
 					active++;
 					console.log(options[active]);
-					options[active].focus();
+					options[active].classList.toggle("focus");
 				}
 			}
 			else if (keyCode === "ArrowUp") {
 				if (active > 0) {
 					active--;
 					console.log(options[active]);
-					options[active].focus();
+					options[active].classList.toggle("focus");
 				}
 			}
 		})
