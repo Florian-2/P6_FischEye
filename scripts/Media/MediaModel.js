@@ -17,7 +17,7 @@ class Media {
     }
 
     get title() {
-        return this._title.toUpperCase();
+        return this._title;
     }
 
     get date() {
@@ -54,7 +54,7 @@ export class ImageModel extends Media {
         const img = document.createElement("img");
         img.src = this.path;
         img.alt = super.title;
-        img.width = 100;
+        img.classList.add("media-thumbnail__image");
         return img;
     }
 }
@@ -79,7 +79,7 @@ export class VideoModel extends Media {
     createHTML() {
         const video = document.createElement("video");
         video.src = this.path;
-        video.width = 100;
+        video.classList.add("media-thumbnail__video");
         return video;
     }
 }

@@ -17,12 +17,12 @@ export class FormModal {
     }
 
     open() {
-        const modal = document.getElementById("contact_modal");
+        const modal = document.querySelector(".modal-overlay");
         modal.style.setProperty("display", "block");
     }
 
     close() {
-        const modal = document.getElementById("contact_modal");
+        const modal = document.querySelector(".modal-overlay");
         modal.style.setProperty("display", "none");
     }
 
@@ -40,6 +40,10 @@ export class FormModal {
         modal.querySelector(".modal__close").addEventListener("click", this.close);
         modal.querySelector("form").addEventListener("submit", (e) => this.submit(e));
 
-        document.getElementById("profile").appendChild(modal);
+        const overlay = document.createElement("div");
+        overlay.classList.add("modal-overlay");
+        overlay.append(modal);
+        console.log(overlay);
+        document.getElementById("profile").append(overlay);
     }
 }

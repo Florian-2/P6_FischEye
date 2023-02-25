@@ -17,13 +17,13 @@ async function init() {
 		const photographe = await new PhotographerAPI().getPhotographerById(userId);
 		const portfolio = await new PortfolioAPI().getPortfolioPhotographer(userId);
 
-		// const photographeModel = new PhotographerModel({ profile: photographe, portfolio });
-		// const card = new PhotographerFactory(photographeModel, "header");
-		// document.getElementById("profile").appendChild(card);
+		const photographeModel = new PhotographerModel({ profile: photographe, portfolio });
+		const card = new PhotographerFactory(photographeModel, "header");
+		document.getElementById("profile").appendChild(card);
 
-		// const btnOpenModal = document.querySelector("button");
-		// const modal = new FormModal(photographe.name);
-		// modal.initEvent(btnOpenModal);
+		const btnOpenModal = document.querySelector("button");
+		const modal = new FormModal(photographe.name);
+		modal.initEvent(btnOpenModal);
 
 		portfolio.forEach((media) => {
 			const mediaModel = new MediaFactory(media);
@@ -33,7 +33,6 @@ async function init() {
 		const filter = new DropdownFilter(medias, "popularity");
 		medias = filter.sortPortfolio;
 
-		// new MediaTemplate(medias).createPortfolio();
 	}
 	catch (error) {
 		console.error(error);
