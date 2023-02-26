@@ -43,7 +43,6 @@ export class FormModal {
         const overlay = document.createElement("div");
         overlay.classList.add("modal-overlay");
         overlay.append(modal);
-        console.log(overlay);
         document.getElementById("profile").append(overlay);
     }
 }

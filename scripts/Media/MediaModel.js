@@ -6,6 +6,7 @@ class Media {
         this._likes = data.likes;
         this._price = data.price;
         this._date = data.date;
+        this._liked = false;
     }
 
     get id() {
@@ -30,6 +31,24 @@ class Media {
 
     get likes() {
         return this._likes;
+    }
+
+    get liked() {
+        return this._liked;
+    }
+
+    /**
+     * @param {number} likes 
+     */
+    set setLikes(likes) {
+        this._likes = likes;
+    }
+
+    /**
+     * @param {boolean} value 
+     */
+    set setLiked(value) {
+        this._liked = value;
     }
 }
 

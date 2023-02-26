@@ -4,8 +4,6 @@ import { PhotographerFactory } from "../Photograpers/photographerFactory.js";
 import { FormModal } from "../templates/modalForm.js";
 import { DropdownFilter } from "../templates/filter.js";
 import { MediaFactory } from "../Media/MediaFactory.js";
-import { ImageModel, VideoModel } from "../Media/MediaModel.js"
-import { MediaTemplate } from "../Media/MediaTemplate.js";
 
 
 async function init() {
