@@ -28,9 +28,7 @@ async function init() {
 			medias.push(mediaModel);
 		});
 
-		const filter = new DropdownFilter(medias, "popularity");
-		medias = filter.sortPortfolio;
-
+		new DropdownFilter(medias, photographeModel, "popularity");
 	}
 	catch (error) {
 		console.error(error);

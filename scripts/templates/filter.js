@@ -4,8 +4,9 @@ export class DropdownFilter {
 	/**
 	 * @param {"popularity" | "date" | "title} sort
 	 */
-	constructor(portfolio, sort = "popularity") {
+	constructor(portfolio, photographer, sort = "popularity") {
 		this.sortPortfolio = portfolio;
+		this.photographer = photographer;
 		this.value = sort;
 		this.render();
 		this.sortMedia();
@@ -13,7 +14,7 @@ export class DropdownFilter {
 	}
 
 	renderPortfolio() {
-		new MediaTemplate(this.sortPortfolio).createPortfolio();
+		new MediaTemplate(this.sortPortfolio, this.photographer).createPortfolio();
 	}
 
 	/**

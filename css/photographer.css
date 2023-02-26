@@ -262,12 +262,32 @@ textarea {
 	background: transparent;
 	border: none;
 	cursor: pointer;
-	transition: transform 150ms;
+	transition: transform 100ms;
 }
 .media-likes__like:active {
-	transform: scale(0.8);
+	transform: scale(1.2);
 }
 
 .media-likes__like .icon {
 	pointer-events: none;
+}
+
+/*  */
+.infos {
+	position: fixed;
+	bottom: 0;
+	right: 30px;
+	padding: 1.5rem;
+	display: flex;
+	gap: 40px;
+	background-color: #db8876;
+	font-size: 1.5rem;
+	font-weight: bold;
+	border-radius: var(--raduis) var(--raduis) 0 0;
+}
+
+.infos-likes {
+	display: flex;
+	align-items: center;
+	gap: 5px;
 }
