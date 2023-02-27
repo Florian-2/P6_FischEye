@@ -28,7 +28,8 @@ async function init() {
 			medias.push(mediaModel);
 		});
 
-		new DropdownFilter(medias, photographeModel, "popularity");
+		const mediaSort = new DropdownFilter(medias, photographeModel, "popularity");
+		// new Ligthbox(mediaSort);
 	}
 	catch (error) {
 		console.error(error);

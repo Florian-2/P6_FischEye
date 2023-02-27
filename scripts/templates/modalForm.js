@@ -31,6 +31,8 @@ export class FormModal {
      */
     submit(e) {
         e.preventDefault();
+        e.target.reset();
+        this.close();
     }
 
     render() {
