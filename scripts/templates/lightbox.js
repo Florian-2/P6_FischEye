@@ -16,6 +16,10 @@ export class Ligthbox {
 
     }
 
+    loadMedia(media) {
+
+    }
+
     render() {
 
     }

@@ -4,6 +4,7 @@ import { PhotographerFactory } from "../Photograpers/photographerFactory.js";
 import { FormModal } from "../templates/modalForm.js";
 import { DropdownFilter } from "../templates/filter.js";
 import { MediaFactory } from "../Media/MediaFactory.js";
+import { Ligthbox } from "../templates/lightbox.js";
 
 
 async function init() {
@@ -29,7 +30,9 @@ async function init() {
 		});
 
 		const mediaSort = new DropdownFilter(medias, photographeModel, "popularity");
-		// new Ligthbox(mediaSort);
+		medias = mediaSort.sortPortfolio;
+
+		// new Ligthbox(medias);
 	}
 	catch (error) {
 		console.error(error);
