@@ -1,7 +1,7 @@
 class API {
 
     constructor() {
-        this.url = "/data/photographers.json";
+        this.url = "data/photographers.json";
     }
 
     async fetch() {
