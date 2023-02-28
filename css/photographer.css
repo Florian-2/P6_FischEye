@@ -65,7 +65,7 @@ body {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	z-index: 10;
+	z-index: 1000;
 	background-color: rgba(255, 255, 255, 0.75);
 }
 
@@ -175,7 +175,6 @@ textarea {
 
 .media-card {
 	border-radius: var(--raduis);
-	overflow: hidden;
 	display: flex;
 	flex-direction: column;
 }
@@ -204,7 +203,7 @@ textarea {
 
 .media-thumbnail::after {
 	position: absolute;
-	z-index: 100;
+	z-index: 1;
 	content: attr(data-icon);
 	font-family: "Font Awesome 5 Free";
 	font-weight: 900;
@@ -215,11 +214,17 @@ textarea {
 	transform: translate(-50%, -50%);
 	transition: opacity var(--transition-time);
 	opacity: 0;
+	pointer-events: none;
 }
 
 .media-thumbnail:hover::before,
 .media-thumbnail:hover::after {
 	opacity: 1;
+}
+
+.media-thumbnail__link {
+	display: block;
+	height: 100%;
 }
 
 .media-thumbnail__video,
@@ -228,6 +233,7 @@ textarea {
 	height: 100%;
 	object-fit: cover;
 	border-radius: var(--raduis);
+	pointer-events: none;
 }
 
 .media-detail {
@@ -275,6 +281,7 @@ textarea {
 /*  */
 .infos {
 	position: fixed;
+	z-index: 2;
 	bottom: 0;
 	right: 30px;
 	padding: 1.5rem;
@@ -297,11 +304,17 @@ textarea {
 	position: fixed;
 	top: 0;
 	left: 0;
-	z-index: 50;
+	z-index: 3;
 	width: 100%;
 	height: 100%;
-	background-color: rgba(255, 255, 255, 0.95);
+	background-color: white;
 	display: flex;
+	transition: opacity var(--transition-time);
+	animation: FadeIn var(--transition-time);
+}
+
+.lightbox.fadeOut {
+	opacity: 0;
 }
 
 .lightbox__next,
@@ -311,7 +324,7 @@ textarea {
 	color: var(--color-primary);
 	background: transparent;
 	border: none;
-	opacity: 0.7;
+	opacity: 0.8;
 	transition: opacity var(--transition-time);
 	cursor: pointer;
 }
@@ -336,6 +349,9 @@ textarea {
 	width: 100%;
 	height: 90vh;
 	object-fit: cover;
+	border-radius: var(--raduis);
+	box-shadow: 0 0 20px 0px #aeaeae;
+	animation: FadeIn var(--transition-time);
 }
 
 .lightbox__close {
@@ -343,10 +359,21 @@ textarea {
 	position: fixed;
 	right: 8px;
 	top: 5px;
-	z-index: 40;
+	z-index: 5;
 }
 
 .lightbox__next,
 .lightbox__prev {
 	width: 100px;
+}
+
+.lightbox-content__loader {
+	width: 50px;
+	height: 50px;
+	background: url(/assets/images/loader.svg) center center no-repeat;
+}
+
+@keyframes FadeIn {
+	from { opacity: 0; }
+	to { opacity: 1; }
 }

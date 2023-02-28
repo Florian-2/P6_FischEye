@@ -32,7 +32,7 @@ async function init() {
 		const mediaSort = new DropdownFilter(medias, photographeModel, "popularity");
 		medias = mediaSort.sortPortfolio;
 
-		// new Ligthbox(medias);
+		Ligthbox.init(medias);
 	}
 	catch (error) {
 		console.error(error);

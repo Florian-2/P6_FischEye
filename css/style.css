@@ -19,10 +19,10 @@
 
 html {
 	font-size: 62.5%;
+	font-family: "DM Sans", sans-serif;
 }
 
 body {
-	font-family: "DM Sans", sans-serif;
 	max-width: 1200px;
 	margin: 0 auto;
 }
@@ -43,10 +43,6 @@ header {
 h1 {
 	color: #901c1c;
 }
-
-/* .logo {
-	height: 50px;
-} */
 
 .photographer_section {
 	display: grid;

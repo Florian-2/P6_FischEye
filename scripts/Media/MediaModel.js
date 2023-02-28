@@ -63,10 +63,15 @@ export class ImageModel extends Media {
     constructor(data) {
         super(data);
         this._imagePath = data.image;
+        this._type = "image";
     }
 
     get path() {
         return `assets/portfolio/${super.photographerId}/${this._imagePath}`;
+    }
+
+    get type() {
+        return this._type;
     }
 
     createHTML() {
@@ -89,10 +94,15 @@ export class VideoModel extends Media {
     constructor(data) {
         super(data);
         this._videoPath = data.video;
+        this._type = "video";
     }
 
     get path() {
         return `assets/portfolio/${super.photographerId}/${this._videoPath}`;
+    }
+
+    get type() {
+        return this._type;
     }
 
     createHTML() {

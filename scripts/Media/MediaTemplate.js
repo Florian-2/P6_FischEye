@@ -55,6 +55,9 @@ export class MediaTemplate {
         const template = document.getElementById("template-media");
         const card = document.importNode(template.content, true);
 
+        const article = card.querySelector(".media-card");
+        article.setAttribute("data-id", data.id);
+
         const thumbnail = card.querySelector(".media-thumbnail");
         thumbnail.dataset.icon = data instanceof ImageModel ? "\uf03e" : "\uf04b";
 

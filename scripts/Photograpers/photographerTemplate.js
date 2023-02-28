@@ -28,7 +28,7 @@ export class PhotographerTemplate {
         const card = document.importNode(templateCard.content, true);
 
         card.querySelector("img").setAttribute("src", this.photographer.portrait);
-        card.querySelector("h2").textContent = this.photographer.name;
+        card.querySelector(".photographer-card__name").textContent = this.photographer.name;
         card.querySelector(".photographer-card__location").textContent = `${this.photographer.city}, ${this.photographer.country}`;
         card.querySelector(".photographer-card__tagline").textContent = this.photographer.tagline;
 
