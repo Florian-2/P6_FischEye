@@ -105,14 +105,14 @@ h1 {
 .photographer-card__location {
 	color: var(--color-primary);
 	font-weight: bold;
-	font-size: 1.4rem;
+	font-size: 1.6rem;
 }
 
 .photographer-card__tagline {
-	font-size: 1.2rem;
+	font-size: 1.4rem;
 }
 
 .photographer-card__price {
 	color: #757575;
-	font-size: 1.1rem;
+	font-size: 1.3rem;
 }

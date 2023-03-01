@@ -63,6 +63,7 @@ export class MediaTemplate {
 
         const link = card.querySelector(".media-thumbnail__link");
         link.setAttribute("href", data.path);
+        link.setAttribute("aria-label", `Agrandir l'image ${data.title}`);
         link.append(data.createHTML());
 
         const btn = card.querySelector(".media-likes__like");

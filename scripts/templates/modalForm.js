@@ -39,6 +39,7 @@ export class FormModal {
         const template = document.getElementById("template-formModal");
         const modal = document.importNode(template.content, true);
         modal.querySelector("h2").innerHTML = `Contactez-moi <br> ${this.#photographerName}`;
+
         modal.querySelector(".modal__close").addEventListener("click", this.close);
         modal.querySelector("form").addEventListener("submit", (e) => this.submit(e));
 

@@ -77,7 +77,7 @@ export class ImageModel extends Media {
     createHTML() {
         const img = document.createElement("img");
         img.src = this.path;
-        img.alt = super.title;
+        img.alt = ` ${this.title}`;
         img.classList.add("media-thumbnail__image");
         return img;
     }

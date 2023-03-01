@@ -90,6 +90,7 @@ export class Ligthbox {
     loadImage() {
         const img = new Image();
         img.src = this.currentMedia.path;
+        img.alt = this.currentMedia.title;
         img.classList.add("lightbox-content__media", "fadeIn");
 
         const container = this.lightboxElement.querySelector(".lightbox-content");
@@ -124,11 +125,11 @@ export class Ligthbox {
     }
 
     createTitle() {
-        const p = document.createElement("p");
-        p.classList.add("lightbox-content__title")
-        p.textContent = this.currentMedia.title;
+        const title = document.createElement("h3");
+        title.classList.add("lightbox-content__title")
+        title.textContent = this.currentMedia.title;
 
-        return p;
+        return title;
     }
 
     /**
