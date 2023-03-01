@@ -33,7 +33,7 @@ a {
 
 header {
 	height: 90px;
-	margin-inline: 20px;
+	margin-inline: 10px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;

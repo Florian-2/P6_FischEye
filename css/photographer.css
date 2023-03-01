@@ -236,7 +236,6 @@ textarea {
 
 .media-detail {
 	padding-top: 0.5rem;
-	padding-right: 0.5rem;
 	display: flex;
 	justify-content: space-between;
 	align-items: first baseline;
@@ -249,6 +248,11 @@ textarea {
 	font-weight: 400;
 }
 
+.media-likes__like {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
 .media-likes {
 	display: flex;
 	align-items: center;
@@ -272,8 +276,9 @@ textarea {
 	transform: scale(1.2);
 }
 
-.media-likes__like .icon {
+.media-likes__heart {
 	pointer-events: none;
+	width: 20px;
 }
 
 /*  */
@@ -295,6 +300,10 @@ textarea {
 	display: flex;
 	align-items: center;
 	gap: 5px;
+}
+
+.infos-likes__heart {
+	width: 17px;
 }
 
 /* ----- Lightbox ----- */

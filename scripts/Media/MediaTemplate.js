@@ -15,21 +15,20 @@ export class MediaTemplate {
         const media = this.portfolio.find((media) => media.id === mediaId);
         const btn = document.querySelector(`button[data-id="${mediaId}"]`);
         const p = btn.previousElementSibling;
-        const icon = btn.querySelector("i.icon");
+        const imgIcon = btn.querySelector("img");
 
         if (!media.liked) {
             media.setLikes = media.likes + 1;
             media.setLiked = true;
-            p.textContent = media.likes;
-            icon.classList.replace("fa-regular", "fa-solid");
+            imgIcon.setAttribute("src", "assets/icons/heart-solid.svg");
         }
         else {
             media.setLikes = media.likes - 1;
             media.setLiked = false;
-            p.textContent = media.likes;
-            icon.classList.replace("fa-solid", "fa-regular");
+            imgIcon.setAttribute("src", "assets/icons/heart-regular.svg");
         }
 
+        p.textContent = media.likes;
         this.updateTotalLikes();
     }
 
