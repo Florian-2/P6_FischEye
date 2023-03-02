@@ -10,7 +10,9 @@ export class PhotographerTemplate {
         const templateCard = document.getElementById("photographer-card");
         const card = document.importNode(templateCard.content, true);
 
-        card.querySelector("a").setAttribute("href", `photographer.html?id=${this.photographer.id}`);
+        const link = card.querySelector("a")
+        link.setAttribute("href", `photographer.html?id=${this.photographer.id}`);
+        link.setAttribute("aria-label", `Voir le profil de ${this.photographer.name}`);
         card.querySelector("img").setAttribute("src", this.photographer.portrait);
         card.querySelector("h2").textContent = this.photographer.name;
         card.querySelector(".photographer-card__location").textContent = `${this.photographer.city}, ${this.photographer.country}`;

@@ -9,13 +9,12 @@
 	box-sizing: border-box;
 }
 
-/* :focus {
+*:focus {
     outline: 4px solid orange;
 }
-
-:active {
-    outline: none;
-} */
+*:active {
+	outline: none;
+}
 
 html {
 	font-size: 62.5%;

@@ -6,6 +6,7 @@ export class FormModal {
      */
     constructor(photographerName) {
         this.#photographerName = photographerName;
+        this.element = null;
         this.render();
     }
 
@@ -45,6 +46,8 @@ export class FormModal {
 
         const overlay = document.createElement("div");
         overlay.classList.add("modal-overlay");
+        overlay.setAttribute("role", "dialog");
+        overlay.setAttribute("aria-modal", true);
         overlay.append(modal);
         document.getElementById("profile").append(overlay);
     }
