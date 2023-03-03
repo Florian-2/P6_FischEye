@@ -49,6 +49,9 @@ export class Ligthbox {
         // Suppression de l'élément html lightbox après 300ms, le temps que l'animation de disparition se lance
         setTimeout(() => this.lightboxElement.remove(), 300);
         document.removeEventListener("keyup", this.handleKeyUp);
+
+        const elHide = document.querySelectorAll("[data-hidden]");
+        elHide.forEach((e) => e.removeAttribute("aria-hidden"));
     }
 
     /**
@@ -144,6 +147,12 @@ export class Ligthbox {
         lightbox.querySelector(".lightbox__prev").addEventListener("click", () => this.prev());
 
         document.body.append(lightbox);
+
+        const elHide = document.querySelHideectorAll("[data-hidden]");
+        elHide.forEach((e) => e.setAttribute("aria-hidden", true));
+
+        document.querySelector(".lightbox__close").focus();
+
         return document.querySelector(".lightbox");
     }
 }

@@ -9,13 +9,6 @@
 	box-sizing: border-box;
 }
 
-*:focus {
-    outline: 4px solid orange;
-}
-*:active {
-	outline: none;
-}
-
 html {
 	font-size: 62.5%;
 	font-family: "DM Sans", sans-serif;

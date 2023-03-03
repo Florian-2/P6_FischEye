@@ -29,6 +29,8 @@ export class PhotographerTemplate {
         const templateCard = document.getElementById("template-photographer-profile");
         const card = document.importNode(templateCard.content, true);
 
+        card.querySelector(".photographer-header").setAttribute("data-hidden", "");
+
         card.querySelector("img").setAttribute("src", this.photographer.portrait);
         card.querySelector(".photographer-card__name").textContent = this.photographer.name;
         card.querySelector(".photographer-card__location").textContent = `${this.photographer.city}, ${this.photographer.country}`;

@@ -20,11 +20,18 @@ export class FormModal {
     open() {
         const modal = document.querySelector(".modal-overlay");
         modal.style.setProperty("display", "block");
+
+        // Récupère les éléments quoi doivent être masqués pour les outils d'accessibilité quand la modale est ouverte
+        const elHide = document.querySelectorAll("[data-hidden]");
+        elHide.forEach((el) => el.setAttribute('aria-hidden', true));
     }
 
     close() {
         const modal = document.querySelector(".modal-overlay");
         modal.style.setProperty("display", "none");
+
+        const elHide = document.querySelectorAll("[data-hidden]");
+        elHide.forEach((el) => el.removeAttribute('aria-hidden'));
     }
 
     /**
