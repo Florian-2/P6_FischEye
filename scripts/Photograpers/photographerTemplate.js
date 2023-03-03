@@ -15,6 +15,7 @@ export class PhotographerTemplate {
 
         link.setAttribute("href", `photographer.html?id=${this.photographer.id}`);
         link.setAttribute("aria-label", `Voir le profil de ${this.photographer.name}`);
+        link.setAttribute("title", `Voir le profil de ${this.photographer.name}`);
         img.setAttribute("src", this.photographer.portrait);
         img.setAttribute("alt", `Photo de profil de ${this.photographer.name}`);
 
