@@ -1,15 +1,15 @@
-import { PhotographerAPI, PortfolioAPI } from "../services/photographer.js";
-import { PhotographerModel } from "../Photograpers/photographerModel.js";
-import { PhotographerFactory } from "../Photograpers/photographerFactory.js";
-import { FormModal } from "../templates/modalForm.js";
-import { DropdownFilter } from "../templates/filter.js";
-import { MediaFactory } from "../Media/MediaFactory.js";
-import { Ligthbox } from "../templates/lightbox.js";
-
+/* eslint-disable import/extensions */
+import PhotographerAPI from '../services/photographer.js';
+import PortfolioAPI from '../services/portfolio.js';
+import PhotographerModel from '../Photograpers/photographerModel.js';
+import PhotographerFactory from '../Photograpers/photographerFactory.js';
+import FormModal from '../templates/modalForm.js';
+import DropdownFilter from '../templates/filter.js';
+import MediaFactory from '../Media/MediaFactory.js';
 
 async function init() {
 	const url = new URLSearchParams(window.location.search);
-	const userId = Number(url.get("id"));
+	const userId = Number(url.get('id'));
 	let medias = [];
 
 	try {
@@ -17,24 +17,21 @@ async function init() {
 		const portfolio = await new PortfolioAPI().getPortfolioPhotographer(userId);
 
 		const photographeModel = new PhotographerModel({ profile: photographe, portfolio });
-		const card = new PhotographerFactory(photographeModel, "header");
-		document.getElementById("profile").appendChild(card);
+		const card = PhotographerFactory.createPhotographer(photographeModel, 'header');
+		document.getElementById('profile').appendChild(card);
 
-		const btnOpenModal = document.querySelector("button");
+		const btnOpenModal = document.querySelector('button');
 		const modal = new FormModal(photographe.name);
 		modal.initEvent(btnOpenModal);
 
 		portfolio.forEach((media) => {
-			const mediaModel = new MediaFactory(media);
+			const mediaModel = MediaFactory.createMedia(media);
 			medias.push(mediaModel);
 		});
 
-		const mediaSort = new DropdownFilter(medias, photographeModel, "popularity");
+		const mediaSort = new DropdownFilter(medias, photographeModel, 'popularity');
 		medias = mediaSort.sortPortfolio;
-
-		Ligthbox.init(medias);
-	}
-	catch (error) {
+	} catch (error) {
 		console.error(error);
 	}
 }

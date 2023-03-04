@@ -1,69 +1,33 @@
-class API {
+/* eslint-disable import/extensions */
+import API from './api.js';
 
-    constructor() {
-        this.url = "data/photographers.json";
-    }
+export default class PhotographerAPI extends API {
+	async getAllPhotographers() {
+		try {
+			const { photographers } = await super.fetch();
+			return photographers;
+		} catch (error) {
+			console.error(error);
+			throw new Error(`Erreur ${error.status}, aucun photographe trouvé`);
+		}
+	}
 
-    async fetch() {
-        const res = await fetch(this.url);
+	/**
+	 * @param {number} userId
+	 */
+	async getPhotographerById(userId) {
+		try {
+			const { photographers } = await super.fetch();
+			const photographer = photographers.filter((user) => user.id === userId)[0];
 
-        if (!res.ok) {
-            throw new Error(res.status);
-        }
+			if (!photographer) {
+				window.location.href = 'index.html';
+			}
 
-        const data = await res.json();
-        return data;
-    }
-}
-
-export class PhotographerAPI extends API {
-
-    async getAllPhotographers() {
-        try {
-            const { photographers } = await super.fetch();
-            return photographers;
-        }
-        catch (error) {
-            console.log(error);
-            throw new Error(`Erreur ${error.status}, aucun photographe trouvé`);
-        }
-    }
-
-    /**
-     * @param {number} userId
-    */
-    async getPhotographerById(userId) {
-        try {
-            const { photographers } = await super.fetch();
-            const photographer = photographers.filter((photographer) => photographer.id === userId)[0];
-
-            if (!photographer) {
-                return window.location.href = "index.html";
-            }
-
-            return photographer;
-        }
-        catch (error) {
-            console.log(error);
-            throw new Error(`Erreur ${error.status}, le profil du photographe n'est pas disponible`);
-        }
-    }
-}
-
-export class PortfolioAPI extends API {
-    /**
-     * @param {number} userId
-    */
-    async getPortfolioPhotographer(userId) {
-        try {
-            const { media } = await super.fetch();
-            const portfolio = media.filter((media) => media.photographerId === userId);
-
-            return portfolio;
-        }
-        catch (error) {
-            console.log(error);
-            throw new Error(`Erreur ${error.status}, le portfolio du photographe n'est pas disponible`);
-        }
-    }
+			return photographer;
+		} catch (error) {
+			console.error(error);
+			throw new Error(`Erreur ${error.status}, le profil du photographe n'est pas disponible`);
+		}
+	}
 }
