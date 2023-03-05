@@ -69,6 +69,11 @@ export default class MediaTemplate {
 		btn.addEventListener('click', (e) => this.addLike(e));
 		btn.setAttribute('data-id', data.id);
 
+		const img = card.querySelector('.media-likes__heart');
+		if (data.liked) {
+			img.setAttribute('src', 'assets/icons/heart-solid.svg');
+		}
+
 		card.querySelector('.media-detail__title').textContent = data.title;
 		card.querySelector('.media-likes__number').textContent = data.likes;
 
