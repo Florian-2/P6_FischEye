@@ -41,7 +41,13 @@ export default class FormModal {
      */
 	submit(e) {
 		e.preventDefault();
-		e.target.reset();
+
+		const form = e.target;
+		const formData = new FormData(form);
+		// eslint-disable-next-line no-console
+		[...formData.entries()].forEach((entrie) => console.log(entrie));
+
+		form.reset();
 		this.close();
 	}
 
