@@ -21,8 +21,8 @@ async function init() {
 		document.getElementById('profile').appendChild(card);
 
 		const btnOpenModal = document.querySelector('button');
-		const modal = new FormModal(photographe.name);
-		modal.initEvent(btnOpenModal);
+		// eslint-disable-next-line no-new
+		new FormModal(photographe.name, btnOpenModal);
 
 		portfolio.forEach((media) => {
 			const mediaModel = MediaFactory.createMedia(media);
